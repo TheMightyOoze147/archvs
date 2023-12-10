@@ -3,5 +3,6 @@
     "files.associations": {
         "compare": "cpp",
         "cstdint": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
