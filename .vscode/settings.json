@@ -1,0 +1,7 @@
+{
+    "docker.dockerPath": "",
+    "files.associations": {
+        "compare": "cpp",
+        "cstdint": "cpp"
+    }
+}
