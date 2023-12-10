@@ -1,17 +1,7 @@
 version: '3'
-
 services:
-  nginx-proxy:
-    image: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - traefik
-
   traefik:
-    image: traefik:v2.5
+    image: "traefik:v2.5"
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -21,40 +11,30 @@ services:
     networks:
       - web
 
-  whoami1:
-    image: containous/whoami
+  nginx-proxy:
+    image: "nginx:latest"
+    ports:
+      - "8081:80"
+
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       - web
+
+  whoami1:
+    image: "containous/whoami"
     labels:
-      - "traefik.http.routers.whoami1.rule=Host(`whoami1.docker.localhost`)"
+      - "traefik.http.routers.whoami1.rule=Host(`whoami1.yourdomain.com`)"
 
   whoami2:
-    image: containous/whoami
-    networks:
-      - web
+    image: "containous/whoami"
     labels:
-      - "traefik.http.routers.whoami2.rule=Host(`whoami2.docker.localhost`)"
+      - "traefik.http.routers.whoami2.rule=Host(`whoami2.yourdomain.com`)"
 
-    whoami3:
-      image: containous/whoami
-      networks:
-        - web
-      labels:
-        - "traefik.http.routers.whoami3.rule=Host(`whoami3.docker.localhost`)"
-
-  whoami4:
-    image: containous/whoami
-    networks:
-      - web
+  whoami3:
+    image: "containous/whoami"
     labels:
-      - "traefik.http.routers.whoami4.rule=Host(`whoami4.docker.localhost`)"
-
-  whoami5:
-    image: containous/whoami
-    networks:
-      - web
-    labels:
-      - "traefik.http.routers.whoami5.rule=Host(`whoami5.docker.localhost`)"
+      - "traefik.http.routers.whoami3.rule=Host(`whoami3.yourdomain.com`)"
 
 networks:
   web:
