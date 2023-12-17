@@ -1,9 +1,12 @@
-FROM gcc:latest
+# Используем базовый образ
+FROM ubuntu:latest
 
-COPY main.cpp /app/main.cpp
+# Копируем bash-скрипт в контейнер
+COPY lb2.sh /usr/src/app/lb2.sh
+COPY test.txt /usr/src/app/test.txt
 
-WORKDIR /app
+# права на выполнение скрипта
+RUN chmod +x /usr/src/app/lb2.sh && apt-get update && apt-get install -y bash net-tools
 
-RUN g++ -o /app/main /app/main.cpp
-
-CMD ["/app/main"]
+# Запуск скриптa при старте контейнера
+CMD ["/usr/src/app/lb2.sh"]

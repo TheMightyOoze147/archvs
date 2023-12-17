@@ -2,7 +2,8 @@
     "docker.dockerPath": "",
     "files.associations": {
         "compare": "cpp",
-        "cstdint": "cpp"
+        "cstdint": "cpp",
+        "iostream": "cpp"
     },
     "cmake.configureOnOpen": false
 }
