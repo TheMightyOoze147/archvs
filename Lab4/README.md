@@ -2,6 +2,12 @@ docker-compose up -d
 ab -n 10000 -c 10 http://whoami1.docker.localhost/
 ab -n 10000 -c 10 http://whoami2.docker.localhost/
 
+curl http://whoami1.docker.localhost/
+curl http://whoami2.docker.localhost/
+curl http://localhost
+
+localhost в браузере
+
 Traefik:
 Traefik - это современный реверс-прокси и балансировщик нагрузки, специально разработанный для работы в контейнерных средах, таких как Docker. Он автоматически обнаруживает новые контейнеры в среде выполнения и настраивает себя соответственно. Traefik поддерживает множество протоколов, включая HTTP, HTTPS, TCP, UDP, и работает с различными системами управления контейнерами.
 
