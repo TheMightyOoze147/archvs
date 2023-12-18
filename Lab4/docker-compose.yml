@@ -20,32 +20,36 @@ services:
     networks:
       - web
     labels:
-      - "traefik.http.routers.whoami1.rule=Host(`whoami.docker.localhost`)"
-      - "traefik.http.services.whoami1.loadbalancer.server.port=80"
+      - "traefik.http.routers.whoami.rule=Host(`localhost`)"
+      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+      - "traefik.http.services.whoami.loadbalancer.sticky=true"
 
   whoami2:
     image: traefik/whoami
     networks:
       - web
     labels:
-      - "traefik.http.routers.whoami2.rule=Host(`whoami.docker.localhost`)"
-      - "traefik.http.services.whoami2.loadbalancer.server.port=80"
+      - "traefik.http.routers.whoami.rule=Host(`localhost`)"
+      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+      - "traefik.http.services.whoami.loadbalancer.sticky=true"
 
   whoami3:
     image: traefik/whoami
     networks:
       - web
     labels:
-      - "traefik.http.routers.whoami3.rule=Host(`whoami.docker.localhost`)"
-      - "traefik.http.services.whoami3.loadbalancer.server.port=80"
+      - "traefik.http.routers.whoami.rule=Host(`localhost`)"
+      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+      - "traefik.http.services.whoami.loadbalancer.sticky=true"
 
   whoami4:
     image: traefik/whoami
     networks:
       - web
     labels:
-      - "traefik.http.routers.whoami4.rule=Host(`whoami.docker.localhost`)"   
-      - "traefik.http.services.whoami4.loadbalancer.server.port=80"   
+      - "traefik.http.routers.whoami.rule=Host(`localhost`)"   
+      - "traefik.http.services.whoami.loadbalancer.server.port=80"   
+      - "traefik.http.services.whoami.loadbalancer.sticky=true"
 
   nginx-proxy:
     image: nginx
